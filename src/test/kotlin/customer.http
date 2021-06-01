@@ -1,6 +1,6 @@
 ### 추가
 POST http://localhost:8080/customers
-Content-Type: application/json;charset=utf-8
+Content-Type: application/json
 
 {
   "firstName": "Daemon",
@@ -9,7 +9,7 @@ Content-Type: application/json;charset=utf-8
 }
 
 ### 수정
-PUT http://localhost:8080/customers/2
+PUT http://localhost:8080/customers/1
 Content-Type: application/json
 
 {
@@ -21,13 +21,10 @@ Content-Type: application/json
 ### 전체 조회
 GET http://localhost:8080/customers
 
-###
-GET http://localhost:8080/test
-
 ### id로 조회
-GET http://localhost:8080/customers/2
+GET http://localhost:8080/customers/1
 
-###
+### id로 조회(오류)
 GET http://localhost:8080/customers/에러
 
 ### id로 삭제
