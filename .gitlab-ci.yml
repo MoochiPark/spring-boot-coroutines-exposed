@@ -1,0 +1,30 @@
+variables:
+  REPOSITORY_NAME: spring-exposed
+
+stages:
+  - build-image
+  - test
+  - publish
+
+build-image-job:
+  stage: build-image
+  script:
+    - docker build -t $HARBOR_URL/$HABOR_PROJECT/$REPOSITORY_NAME:2021.22.0 .
+
+test-job:
+  stage: test
+  script:
+    - gradle test
+  artifacts:
+    when: always
+    reports:
+      junit: build/test-results/test/**/TEST-*.xml
+
+publish:
+  image: docker:stable
+  services:
+    - name: docker:dind
+  stage: publish
+  script:
+    - docker login $HARBOR_URL -u $HARBOR_ID -p $HARBOR_PASSWORD_TOKEN
+    - docker push $HARBOR_URL/$HARBOR_PROJECT/$REPOSITORY_NAME:2021.22.0

@@ -25,7 +25,6 @@ dependencies {
     runtimeOnly("com.h2database:h2")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("io.projectreactor:reactor-test")
-
     implementation("org.jetbrains.exposed:exposed-spring-boot-starter:0.31.1")
 }
 
